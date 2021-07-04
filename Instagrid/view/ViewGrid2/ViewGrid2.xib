@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ViewGrid2" customModule="Instagrid" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aNA-tf-9l2">
+                    <rect key="frame" x="12" y="156" width="128" height="132"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
+                    <connections>
+                        <action selector="actionButtonDownLeft:" destination="iN0-l3-epB" eventType="touchUpInside" id="JCR-bp-pRI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="7W5-EJ-0VX">
+                    <rect key="frame" x="152" y="156" width="136" height="132"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
+                    <connections>
+                        <action selector="actionButtonDownRight:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bgz-MQ-hnP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="a2i-rI-OSa">
+                    <rect key="frame" x="12" y="12" width="276" height="132"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="LargeWhiteAndPlus"/>
+                    <connections>
+                        <action selector="actionButtonUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="XoA-aO-FRD"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7W5-EJ-0VX" secondAttribute="trailing" constant="12" id="10M-zJ-dkS"/>
+                <constraint firstItem="aNA-tf-9l2" firstAttribute="height" secondItem="a2i-rI-OSa" secondAttribute="height" id="BS8-cE-D7F"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aNA-tf-9l2" secondAttribute="bottom" constant="12" id="EdQ-uZ-RiI"/>
+                <constraint firstItem="aNA-tf-9l2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="IPi-EU-7RI"/>
+                <constraint firstItem="aNA-tf-9l2" firstAttribute="top" secondItem="a2i-rI-OSa" secondAttribute="bottom" constant="12" id="UZ0-BH-a5E"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7W5-EJ-0VX" secondAttribute="bottom" constant="12" id="Xcc-El-IAM"/>
+                <constraint firstItem="7W5-EJ-0VX" firstAttribute="height" secondItem="a2i-rI-OSa" secondAttribute="height" id="Xua-4F-FrF"/>
+                <constraint firstItem="a2i-rI-OSa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="aWv-9q-1vc"/>
+                <constraint firstItem="7W5-EJ-0VX" firstAttribute="leading" secondItem="aNA-tf-9l2" secondAttribute="trailing" constant="12" id="iYM-4E-5xS"/>
+                <constraint firstItem="a2i-rI-OSa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="xD4-uO-Nid"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a2i-rI-OSa" secondAttribute="trailing" constant="12" id="xXl-qk-qzq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buttonDownLeft" destination="aNA-tf-9l2" id="VcH-YX-u7S"/>
+                <outlet property="buttonDownRight" destination="7W5-EJ-0VX" id="Aos-Wj-IZR"/>
+                <outlet property="buttonUp" destination="a2i-rI-OSa" id="6WD-L5-Gh5"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="LargeWhiteAndPlus" width="270" height="128"/>
+        <image name="LitleWhiteAndPlus" width="128" height="128"/>
+    </resources>
+</document>
