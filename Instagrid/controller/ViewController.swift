@@ -51,25 +51,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         view3.isHidden = true
                 
         imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
+        imagePicker.delegate = self        
         
-        // Sources : https://cocoacasts.com/swift-fundamentals-working-with-swipe-gesture-recognizers-in-swift
+        viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .left))
         viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .up))
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)         
-     }
-    
-    @objc func rotated() {
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-        } else {
-            print("Portrait")
-        }
     }
     
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
@@ -79,7 +64,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        print("A que coucou")
+        // Test if Landscape
+        if (UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 2)) {
+            print("Landscape", sender.direction, UIDevice.current.orientation.isLandscape)
+        } 
+        // Test if Portrait
+        if (!UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 4)) {
+            print("Portrait", sender.direction, UIDevice.current.orientation.isLandscape)
+        }
     }
     
     @IBAction func actionButtonGrid1(_ sender: Any) {
@@ -119,10 +111,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-//            btnV1U.contentMode = .scaleAspectFill
-            btnV1U.setImage(image, for: .normal)
+            btnV1U.setBackgroundImage(image, for: .normal)
         }
-        
+    }
+    
+    func imagePickerControllerPlus(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any], _ btnImg: UIButton!) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            btnImg.setBackgroundImage(image, for: .normal)
+        }
     }
     
 

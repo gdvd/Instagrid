@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment version="4352" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -169,6 +170,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.054395519199999999" green="0.44403448699999998" blue="0.63620245460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="JHL-kY-Ln8" secondAttribute="bottom" id="7iX-dj-7wL"/>
                                     <constraint firstItem="JHL-kY-Ln8" firstAttribute="leading" secondItem="tXa-yQ-URp" secondAttribute="leading" id="8lP-cU-OOV"/>
@@ -255,9 +257,10 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6w-ev-IBA">
-                                <rect key="frame" x="10" y="150" width="88" height="60"/>
+                                <rect key="frame" x="10" y="150" width="158" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9n9-uD-l8X"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="H0e-Rw-FAn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,6 +330,7 @@
                             <constraint firstItem="n6w-ev-IBA" firstAttribute="top" secondItem="dw2-8N-46w" secondAttribute="bottom" constant="8" symbolic="YES" id="Qvy-UB-YZH"/>
                             <constraint firstItem="7Pb-bF-aOG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="St0-1P-YPV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jOS-AE-DVx" secondAttribute="trailing" id="SvX-iO-6mW"/>
+                            <constraint firstItem="iB6-0M-ez3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SzS-Fd-mh6"/>
                             <constraint firstItem="dw2-8N-46w" firstAttribute="centerX" secondItem="n6w-ev-IBA" secondAttribute="centerX" id="TTk-V1-Q3d"/>
                             <constraint firstItem="tXa-yQ-URp" firstAttribute="width" secondItem="jOS-AE-DVx" secondAttribute="width" id="UAu-sV-LmA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jOS-AE-DVx" secondAttribute="trailing" id="WDQ-xv-i5G"/>
@@ -336,13 +340,14 @@
                             <constraint firstItem="tXa-yQ-URp" firstAttribute="leading" secondItem="n6w-ev-IBA" secondAttribute="trailing" constant="10" id="bUg-og-mlS"/>
                             <constraint firstItem="iB6-0M-ez3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dcL-Na-5Ys"/>
                             <constraint firstItem="tXa-yQ-URp" firstAttribute="centerX" secondItem="jOS-AE-DVx" secondAttribute="centerX" id="hl7-TR-RKr"/>
-                            <constraint firstItem="n6w-ev-IBA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="hne-54-hWC"/>
+                            <constraint firstItem="n6w-ev-IBA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="10" id="hne-54-hWC"/>
                             <constraint firstItem="jOS-AE-DVx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jbX-qt-L1F"/>
                             <constraint firstItem="tXa-yQ-URp" firstAttribute="centerY" secondItem="n6w-ev-IBA" secondAttribute="centerY" id="kcc-1q-OYD"/>
-                            <constraint firstItem="mie-6J-Ect" firstAttribute="top" secondItem="Pob-7k-l7H" secondAttribute="bottom" constant="14" id="lrS-uM-Lqd"/>
+                            <constraint firstItem="mie-6J-Ect" firstAttribute="top" secondItem="Pob-7k-l7H" secondAttribute="bottom" priority="999" constant="14" id="lrS-uM-Lqd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iB6-0M-ez3" secondAttribute="trailing" id="u2h-ej-hLU"/>
                             <constraint firstItem="7Pb-bF-aOG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uwN-In-QTw"/>
                             <constraint firstItem="Pob-7k-l7H" firstAttribute="centerX" secondItem="mie-6J-Ect" secondAttribute="centerX" id="wHx-fV-8DA"/>
+                            <constraint firstItem="tXa-yQ-URp" firstAttribute="leading" secondItem="iB6-0M-ez3" secondAttribute="trailing" id="xNi-JA-oFc"/>
                             <constraint firstItem="7Pb-bF-aOG" firstAttribute="width" secondItem="tXa-yQ-URp" secondAttribute="width" id="xkh-ph-4b2"/>
                             <constraint firstItem="7Pb-bF-aOG" firstAttribute="top" secondItem="tXa-yQ-URp" secondAttribute="bottom" constant="70" id="yN7-1d-wUn"/>
                         </constraints>
@@ -352,18 +357,20 @@
                                 <exclude reference="dw2-8N-46w"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="TTk-V1-Q3d"/>
+                                <exclude reference="Qvy-UB-YZH"/>
+                                <exclude reference="hne-54-hWC"/>
                                 <exclude reference="M81-r7-we2"/>
                                 <exclude reference="5Kf-VL-N5p"/>
                                 <exclude reference="9JE-6J-6C2"/>
                                 <exclude reference="PV9-cq-Kjv"/>
-                                <exclude reference="Qvy-UB-YZH"/>
-                                <exclude reference="hne-54-hWC"/>
-                                <exclude reference="TTk-V1-Q3d"/>
+                                <exclude reference="SzS-Fd-mh6"/>
                                 <exclude reference="6Qv-YB-HJf"/>
                                 <exclude reference="UAu-sV-LmA"/>
                                 <exclude reference="bUg-og-mlS"/>
                                 <exclude reference="hl7-TR-RKr"/>
                                 <exclude reference="kcc-1q-OYD"/>
+                                <exclude reference="xNi-JA-oFc"/>
                                 <exclude reference="389-3O-SPL"/>
                                 <exclude reference="5MZ-A8-YmL"/>
                                 <exclude reference="CEZ-ia-Qys"/>
@@ -378,18 +385,19 @@
                                 <exclude reference="mie-6J-Ect"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="TTk-V1-Q3d"/>
+                                <include reference="Qvy-UB-YZH"/>
+                                <include reference="hne-54-hWC"/>
                                 <exclude reference="DZK-wc-pjp"/>
                                 <include reference="M81-r7-we2"/>
                                 <exclude reference="SvX-iO-6mW"/>
                                 <exclude reference="WDQ-xv-i5G"/>
                                 <exclude reference="u2h-ej-hLU"/>
                                 <include reference="5Kf-VL-N5p"/>
-                                <include reference="9JE-6J-6C2"/>
+                                <exclude reference="9JE-6J-6C2"/>
                                 <include reference="PV9-cq-Kjv"/>
+                                <include reference="SzS-Fd-mh6"/>
                                 <exclude reference="dcL-Na-5Ys"/>
-                                <include reference="Qvy-UB-YZH"/>
-                                <include reference="hne-54-hWC"/>
-                                <include reference="TTk-V1-Q3d"/>
                                 <exclude reference="Dq2-oE-oah"/>
                                 <exclude reference="Xsa-lA-HXm"/>
                                 <exclude reference="jbX-qt-L1F"/>
@@ -403,6 +411,7 @@
                                 <include reference="bUg-og-mlS"/>
                                 <include reference="hl7-TR-RKr"/>
                                 <include reference="kcc-1q-OYD"/>
+                                <include reference="xNi-JA-oFc"/>
                                 <include reference="389-3O-SPL"/>
                                 <include reference="5MZ-A8-YmL"/>
                                 <include reference="CEZ-ia-Qys"/>
@@ -438,14 +447,15 @@
             <point key="canvasLocation" x="128.87323943661971" y="110.625"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.86611950400000004" green="0.86624437570000001" blue="0.86609214540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="Arrow Left" width="3.5" height="4.5"/>
         <image name="Arrow Up" width="4.5" height="3.5"/>
-        <image name="LargeWhiteAndPlus" width="270" height="128"/>
+        <image name="LargeWhiteAndPlus" width="135" height="64"/>
         <image name="Layout 1" width="27" height="27"/>
         <image name="Layout 2" width="27" height="27"/>
         <image name="Layout 3" width="27" height="27"/>
-        <image name="LitleWhiteAndPlus" width="128" height="128"/>
+        <image name="LitleWhiteAndPlus" width="64" height="64"/>
         <image name="Selected" width="27" height="27"/>
     </resources>
 </document>
