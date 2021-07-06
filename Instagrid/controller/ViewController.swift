@@ -21,7 +21,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var view3: UIView!
     
     // View1 Outlets
-
     @IBOutlet weak var btnV1U: UIButton!
     @IBOutlet weak var btnV1DL: UIButton!
     @IBOutlet weak var btnV1DR: UIButton!
@@ -53,8 +52,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self        
         
-        viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .left))
         viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .up))
+        viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
     }
     
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
@@ -64,11 +63,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        // Test if Landscape
-        if (UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 2)) {
+        // If Landscape
+        if (UIDevice.current.orientation.isLandscape && sender.direction.rawValue == 2) {
             print("Landscape", sender.direction, UIDevice.current.orientation.isLandscape)
         } 
-        // Test if Portrait
+        // If Portrait
         if (!UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 4)) {
             print("Portrait", sender.direction, UIDevice.current.orientation.isLandscape)
         }
@@ -92,8 +91,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         view1.isHidden = true
         view2.isHidden = false
         view3.isHidden = true
-        
-
     }
     
     @IBAction func actionButtonGrid3(_ sender: Any) {
@@ -104,8 +101,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         view1.isHidden = true
         view2.isHidden = true
         view3.isHidden = false
-        
-
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -114,14 +109,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             btnV1U.setBackgroundImage(image, for: .normal)
         }
     }
-    
-    func imagePickerControllerPlus(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any], _ btnImg: UIButton!) {
-        picker.dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            btnImg.setBackgroundImage(image, for: .normal)
-        }
-    }
-    
 
     // View1 Action
     @IBAction func actionV1U(_ sender: Any) {
@@ -136,7 +123,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     @IBAction func actionV1DL(_ sender: Any) {
         print("A que coucou actionV1DL")
-//        imagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     @IBAction func actionV1DR(_ sender: Any) {
         print("A que coucou actionV1DR")
