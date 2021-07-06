@@ -36,7 +36,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var btnV3DL: UIButton!
     @IBOutlet weak var btnV3DR: UIButton!
     
-
+    // temporary button selected to show image after to use pickerView
+    var btn: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePicker.delegate = self        
         
         viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .up))
-        viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
+        viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .left))
     }
     
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
@@ -63,6 +64,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+//        print("===========",UIDevice.current.orientation.isLandscape, sender.direction.rawValue)
         // If Landscape
         if (UIDevice.current.orientation.isLandscape && sender.direction.rawValue == 2) {
             print("Landscape", sender.direction, UIDevice.current.orientation.isLandscape)
@@ -73,6 +75,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
     
+    // Switch viewGrid1-3
     @IBAction func actionButtonGrid1(_ sender: Any) {
         buttonGrid1.imageView!.isHidden = false
         buttonGrid2.imageView!.isHidden = true
@@ -103,61 +106,69 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         view3.isHidden = false
     }
     
+    // MARK: - Image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            btnV1U.setBackgroundImage(image, for: .normal)
+            if let button = btn {
+                button.setBackgroundImage(image, for: .normal)
+            }
+        }
+    }
+    
+    private func prepareImagePickerController(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
         }
     }
 
-    // View1 Action
-    @IBAction func actionV1U(_ sender: Any) {
-        print("A que coucou actionV1U")
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
-        }
+    // MARK: - View1 Action
+    @IBAction func actionV1U(_ sender: UIButton) {
+        btn = btnV1U
+        prepareImagePickerController()
     }
-    @IBAction func actionV1DL(_ sender: Any) {
-        print("A que coucou actionV1DL")
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
-        }
+    @IBAction func actionV1DL(_ sender: UIButton) {
+        btn = btnV1DL
+        prepareImagePickerController()
     }
-    @IBAction func actionV1DR(_ sender: Any) {
-        print("A que coucou actionV1DR")
+    @IBAction func actionV1DR(_ sender: UIButton) {
+        btn = btnV1DR
+        prepareImagePickerController()
     }
     
-    // View2 Action
-    @IBAction func actionV2UL(_ sender: Any) {
-        print("A que coucou actionV2UL")
+    // MARK: - View2 Action
+    @IBAction func actionV2UL(_ sender: UIButton) {
+        btn = btnV2UL
+        prepareImagePickerController()
     }
-    @IBAction func actionV2UR(_ sender: Any) {
-        print("A que coucou actionV2UR")
+    @IBAction func actionV2UR(_ sender: UIButton) {
+        btn = btnV2UR
+        prepareImagePickerController()
     }
-    @IBAction func actionV2D(_ sender: Any) {
-        print("A que coucou actionV2D")
+    @IBAction func actionV2D(_ sender: UIButton) {
+        btn = btnV2D
+        prepareImagePickerController()
     }
     
-    // View3 Action
-    @IBAction func actionV3UL(_ sender: Any) {
-        print("A que coucou actionV3UL")
+    // MARK: - View3 Action
+    @IBAction func actionV3UL(_ sender: UIButton) {
+        btn = btnV3UL
+        prepareImagePickerController()
     }
-    @IBAction func actionV3UR(_ sender: Any) {
-        print("A que coucou actionV3UR")
+    @IBAction func actionV3UR(_ sender: UIButton) {
+        btn = btnV3UR
+        prepareImagePickerController()
     }
-    @IBAction func actionV3DL(_ sender: Any) {
-        print("A que coucou actionV3DL")
+    @IBAction func actionV3DL(_ sender: UIButton) {
+        btn = btnV3DL
+        prepareImagePickerController()
     }
-    @IBAction func actionV3DR(_ sender: Any) {
-        print("A que coucou actionV3DR")
+    @IBAction func actionV3DR(_ sender: UIButton) {
+        btn = btnV3DR
+        prepareImagePickerController()
     }
     
 
