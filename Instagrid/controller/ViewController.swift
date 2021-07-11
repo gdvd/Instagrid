@@ -11,6 +11,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBOutlet weak var viewGesture: UIView!
     var imagePicker: UIImagePickerController!
+    var gridNumber: Int = 1
     
     // Button to select grid
     @IBOutlet weak var buttonGrid1: UIButton!
@@ -41,20 +42,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        buttonGrid1.imageView!.isHidden = false
-        buttonGrid2.imageView!.isHidden = true
-        buttonGrid3.imageView!.isHidden = true
-        
-        view1.isHidden = false
-        view2.isHidden = true
-        view3.isHidden = true
+        selectGrid()
                 
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self        
         
         viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .up))
         viewGesture.addGestureRecognizer(createSwipeGestureRecognizer(for: .left))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    deinit {
+       NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)     
+    }
+    
+    @objc func rotated() {
+        selectGrid()
     }
     
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
@@ -64,46 +68,61 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-//        print("===========",UIDevice.current.orientation.isLandscape, sender.direction.rawValue)
-        // If Landscape
+        // Landscape
         if (UIDevice.current.orientation.isLandscape && sender.direction.rawValue == 2) {
-            print("Landscape", sender.direction, UIDevice.current.orientation.isLandscape)
+            print("===>Landscape")
         } 
-        // If Portrait
+        // Portrait
         if (!UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 4)) {
-            print("Portrait", sender.direction, UIDevice.current.orientation.isLandscape)
+            print("===>Portrait")
+        }
+    }
+    
+    private func selectGrid(){
+        switch gridNumber {
+        case 1:
+            buttonGrid1.imageView!.isHidden = false
+            buttonGrid2.imageView!.isHidden = true
+            buttonGrid3.imageView!.isHidden = true
+            
+            view1.isHidden = false
+            view2.isHidden = true
+            view3.isHidden = true
+        case 2:
+            buttonGrid1.imageView!.isHidden = true
+            buttonGrid2.imageView!.isHidden = false
+            buttonGrid3.imageView!.isHidden = true
+            
+            view1.isHidden = true
+            view2.isHidden = false
+            view3.isHidden = true
+        case 3:
+            buttonGrid1.imageView!.isHidden = true
+            buttonGrid2.imageView!.isHidden = true
+            buttonGrid3.imageView!.isHidden = false
+            
+            view1.isHidden = true
+            view2.isHidden = true
+            view3.isHidden = false            
+        default:
+            print("Error gridNumber?")
         }
     }
     
     // Switch viewGrid1-3
     @IBAction func actionButtonGrid1(_ sender: Any) {
-        buttonGrid1.imageView!.isHidden = false
-        buttonGrid2.imageView!.isHidden = true
-        buttonGrid3.imageView!.isHidden = true
-        
-        view1.isHidden = false
-        view2.isHidden = true
-        view3.isHidden = true
+        gridNumber = 1
+        selectGrid()
     }
     
     @IBAction func actionButtonGrid2(_ sender: Any) {
-        buttonGrid1.imageView!.isHidden = true
-        buttonGrid2.imageView!.isHidden = false
-        buttonGrid3.imageView!.isHidden = true
-        
-        view1.isHidden = true
-        view2.isHidden = false
-        view3.isHidden = true
+        gridNumber = 2
+        selectGrid()
     }
     
     @IBAction func actionButtonGrid3(_ sender: Any) {
-        buttonGrid1.imageView!.isHidden = true
-        buttonGrid2.imageView!.isHidden = true
-        buttonGrid3.imageView!.isHidden = false
-        
-        view1.isHidden = true
-        view2.isHidden = true
-        view3.isHidden = false
+        gridNumber = 3
+        selectGrid()
     }
     
     // MARK: - Image picker
