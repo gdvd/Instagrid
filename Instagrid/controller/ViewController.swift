@@ -17,6 +17,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var buttonGrid1: UIButton!
     @IBOutlet weak var buttonGrid2: UIButton!
     @IBOutlet weak var buttonGrid3: UIButton!
+    @IBOutlet weak var view0: UIView!
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
@@ -39,6 +40,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // temporary button selected to show image after to use pickerView
     var btn: UIButton?
+    var orientationChange = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)     
     }
     
+    //MARK: - Swipes and Moves
     @objc func rotated() {
+        orientationChange = true
         selectGrid()
     }
     
@@ -69,15 +73,85 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         // Landscape
-        if (UIDevice.current.orientation.isLandscape && sender.direction.rawValue == 2) {
-            print("===>Landscape")
-        } 
+        if (UIDevice.current.orientation.isLandscape && sender.direction == .left) {
+            orientationChange = false
+            UIView.animate(withDuration: 1.0, animations: {
+                self.moveup()
+            }, completion: {(finished) in 
+                if finished {
+                    self.shareView()
+                }
+            })}
         // Portrait
-        if (!UIDevice.current.orientation.isLandscape && (sender.direction.rawValue == 4)) {
-            print("===>Portrait")
+        if (!UIDevice.current.orientation.isLandscape && (sender.direction == .up)) {
+            orientationChange = false
+            UIView.animate(withDuration: 1.0, animations: {
+                self.moveleft()
+            }, completion: {(finished) in 
+                if finished {
+                    self.shareView()
+                }
+            })
+        }
+    }
+    private func shareView(){
+        let img = view0.asImg
+        let avc = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+        
+        avc.excludedActivityTypes = [UIActivity.ActivityType.airDrop,
+                                     UIActivity.ActivityType.addToReadingList,
+//                                     UIActivity.ActivityType.assignToContact,
+                                     UIActivity.ActivityType.saveToCameraRoll,
+                                     UIActivity.ActivityType.copyToPasteboard
+        ]
+        
+        // Share or cancel
+        avc.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            self.viewsBack()
+        }
+        
+        avc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(avc, animated: true)
+    }
+    
+    private func viewsBack(){
+        if !orientationChange {
+            if UIDevice.current.orientation.isLandscape{
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.movedown()
+                }, completion: {(finished) in 
+                    if finished {
+                    }
+                })
+            } else {
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.moveright()
+                }, completion: {(finished) in 
+                    if finished {
+                    }
+                })
+            }   
         }
     }
     
+    private func moveup(){
+        view0.center.x -= UIScreen.main.bounds.height * 2
+    }
+    
+    private func moveleft(){
+        view0.center.y -= UIScreen.main.bounds.width * 2
+    }
+    
+    private func movedown(){
+        view0.center.x += UIScreen.main.bounds.height * 2
+    }
+    
+    private func moveright(){
+        view0.center.y += UIScreen.main.bounds.width * 2
+    }
+    
+    
+    // MARK: - Switch viewGrid
     private func selectGrid(){
         switch gridNumber {
         case 1:
@@ -108,8 +182,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             print("Error gridNumber?")
         }
     }
-    
-    // Switch viewGrid1-3
+
     @IBAction func actionButtonGrid1(_ sender: Any) {
         gridNumber = 1
         selectGrid()
@@ -125,16 +198,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         selectGrid()
     }
     
-    // MARK: - Image picker
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            if let button = btn {
-                button.setBackgroundImage(image, for: .normal)
-            }
-        }
-    }
-    
+    // MARK: - Image picker    
     private func prepareImagePickerController(){
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             imagePicker.delegate = self
@@ -144,6 +208,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if let button = btn {
+                button.setBackgroundImage(image, for: .normal)
+                btn = nil
+            }
+            selectGrid()
+        }
+    }
+    
     // MARK: - View1 Action
     @IBAction func actionV1U(_ sender: UIButton) {
         btn = btnV1U
@@ -189,7 +264,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         btn = btnV3DR
         prepareImagePickerController()
     }
-    
 
 }
 
+extension UIView {
+    var asImg: UIImage? {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
