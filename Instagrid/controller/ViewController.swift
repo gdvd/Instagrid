@@ -100,7 +100,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         avc.excludedActivityTypes = [UIActivity.ActivityType.airDrop,
                                      UIActivity.ActivityType.addToReadingList,
-//                                     UIActivity.ActivityType.assignToContact,
                                      UIActivity.ActivityType.saveToCameraRoll,
                                      UIActivity.ActivityType.copyToPasteboard
         ]
@@ -135,19 +134,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     private func moveup(){
-        view0.center.x -= UIScreen.main.bounds.height * 2
+        view0.center.x -= UIScreen.main.bounds.width
     }
     
     private func moveleft(){
-        view0.center.y -= UIScreen.main.bounds.width * 2
+        view0.center.y -= UIScreen.main.bounds.height
     }
     
     private func movedown(){
-        view0.center.x += UIScreen.main.bounds.height * 2
+        view0.center.x += UIScreen.main.bounds.width
     }
     
     private func moveright(){
-        view0.center.y += UIScreen.main.bounds.width * 2
+        view0.center.y += UIScreen.main.bounds.height    
+        
     }
     
     
@@ -183,17 +183,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
-    @IBAction func actionButtonGrid1(_ sender: Any) {
+    @IBAction func actionButtonGrid1(_ sender: UIButton) {
         gridNumber = 1
         selectGrid()
     }
     
-    @IBAction func actionButtonGrid2(_ sender: Any) {
+    @IBAction func actionButtonGrid2(_ sender: UIButton) {
         gridNumber = 2
         selectGrid()
     }
     
-    @IBAction func actionButtonGrid3(_ sender: Any) {
+    @IBAction func actionButtonGrid3(_ sender: UIButton) {
         gridNumber = 3
         selectGrid()
     }
