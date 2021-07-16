@@ -35,21 +35,21 @@
                                                 <rect key="frame" x="12" y="12" width="256" height="122"/>
                                                 <state key="normal" backgroundImage="LargeWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV1U:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I33-z2-4uz"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eoc-rC-Kdn"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-Em-ZLO">
                                                 <rect key="frame" x="12" y="146" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV1DL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XPr-Z1-883"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AwN-lg-p1g"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqC-S9-uP7">
                                                 <rect key="frame" x="146" y="146" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV1DR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F1q-jQ-6qa"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TSe-80-lEi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -76,21 +76,21 @@
                                                 <rect key="frame" x="12" y="12" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV2UL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uWF-ct-A2F"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="83a-u5-ZwY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isQ-XN-XKu">
                                                 <rect key="frame" x="146" y="12" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV2UR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YtP-CD-sCk"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PrQ-xF-3LB"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikq-qi-F2h">
                                                 <rect key="frame" x="12" y="146" width="256" height="122"/>
                                                 <state key="normal" backgroundImage="LargeWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV2D:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XZe-6g-9fs"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0cy-aW-1Kc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -116,28 +116,28 @@
                                                 <rect key="frame" x="12" y="12" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV3UL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8YZ-my-cqA"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wKh-W6-cP4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJl-yE-33l">
                                                 <rect key="frame" x="146" y="12" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV3UR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rX7-WK-d6L"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u99-rN-GFc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-Na-2yR">
                                                 <rect key="frame" x="12" y="146" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV3DL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k67-h1-0Gr"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gUb-wl-Dmq"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcc-lb-7RE">
                                                 <rect key="frame" x="146" y="146" width="122" height="122"/>
                                                 <state key="normal" backgroundImage="LitleWhiteAndPlus"/>
                                                 <connections>
-                                                    <action selector="actionV3DR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVO-Dd-RSs"/>
+                                                    <action selector="actionButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ky3-g6-HQD"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -182,34 +182,34 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Pb-bF-aOG">
                                 <rect key="frame" x="20" y="463" width="280" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NG-Qq-07Z">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NG-Qq-07Z">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4NG-Qq-07Z" secondAttribute="height" multiplier="1:1" priority="950" id="t8P-rF-NV9"/>
                                         </constraints>
                                         <state key="normal" image="Selected" backgroundImage="Layout 1"/>
                                         <connections>
-                                            <action selector="actionButtonGrid1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="da7-hR-D7Z"/>
+                                            <action selector="selectOneGrid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FPD-Me-c0L"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cB-tH-otQ">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cB-tH-otQ">
                                         <rect key="frame" x="100" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9cB-tH-otQ" secondAttribute="height" multiplier="1:1" priority="949" id="bUZ-9Y-jWf"/>
                                         </constraints>
                                         <state key="normal" image="Selected" backgroundImage="Layout 2"/>
                                         <connections>
-                                            <action selector="actionButtonGrid2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1AO-L1-POn"/>
+                                            <action selector="selectOneGrid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTJ-PE-9VP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQd-oE-iBP">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQd-oE-iBP">
                                         <rect key="frame" x="200" y="0.0" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XQd-oE-iBP" secondAttribute="height" multiplier="1:1" priority="947" id="cko-O8-kNc"/>
                                         </constraints>
                                         <state key="normal" image="Selected" backgroundImage="Layout 3"/>
                                         <connections>
-                                            <action selector="actionButtonGrid3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B4i-8e-w5s"/>
+                                            <action selector="selectOneGrid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eqS-hv-fR1"/>
                                         </connections>
                                     </button>
                                 </subviews>

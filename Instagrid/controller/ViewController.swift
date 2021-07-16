@@ -9,38 +9,38 @@ import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    @IBOutlet weak var viewGesture: UIView!
+    @IBOutlet private weak var viewGesture: UIView!
     var imagePicker: UIImagePickerController!
-    var gridNumber: Int = 1
+    private var gridNumber: Int = 1
     
     // Button to select grid
-    @IBOutlet weak var buttonGrid1: UIButton!
-    @IBOutlet weak var buttonGrid2: UIButton!
-    @IBOutlet weak var buttonGrid3: UIButton!
-    @IBOutlet weak var view0: UIView!
-    @IBOutlet weak var view1: UIView!
-    @IBOutlet weak var view2: UIView!
-    @IBOutlet weak var view3: UIView!
+    @IBOutlet private weak var buttonGrid1: UIButton!
+    @IBOutlet private weak var buttonGrid2: UIButton!
+    @IBOutlet private weak var buttonGrid3: UIButton!
+    @IBOutlet private weak var view0: UIView!
+    @IBOutlet private weak var view1: UIView!
+    @IBOutlet private weak var view2: UIView!
+    @IBOutlet private weak var view3: UIView!
     
     // View1 Outlets
-    @IBOutlet weak var btnV1U: UIButton!
-    @IBOutlet weak var btnV1DL: UIButton!
-    @IBOutlet weak var btnV1DR: UIButton!
+    @IBOutlet private weak var btnV1U: UIButton!
+    @IBOutlet private weak var btnV1DL: UIButton!
+    @IBOutlet private weak var btnV1DR: UIButton!
     
     // View2 Outlets
-    @IBOutlet weak var btnV2UL: UIButton!
-    @IBOutlet weak var btnV2UR: UIButton!
-    @IBOutlet weak var btnV2D: UIButton!
+    @IBOutlet private weak var btnV2UL: UIButton!
+    @IBOutlet private weak var btnV2UR: UIButton!
+    @IBOutlet private weak var btnV2D: UIButton!
     
     // View3 Outlets
-    @IBOutlet weak var btnV3UL: UIButton!
-    @IBOutlet weak var btnV3UR: UIButton!
-    @IBOutlet weak var btnV3DL: UIButton!
-    @IBOutlet weak var btnV3DR: UIButton!
+    @IBOutlet private weak var btnV3UL: UIButton!
+    @IBOutlet private weak var btnV3UR: UIButton!
+    @IBOutlet private weak var btnV3DL: UIButton!
+    @IBOutlet private weak var btnV3DR: UIButton!
     
     // temporary button selected to show image after to use pickerView
-    var btn: UIButton?
-    var orientationChange = true
+    private var btnSelected: UIButton?
+    private var orientationChange = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,25 +155,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     private func selectGrid(){
         switch gridNumber {
         case 1:
-            buttonGrid1.imageView!.isHidden = false
-            buttonGrid2.imageView!.isHidden = true
-            buttonGrid3.imageView!.isHidden = true
+            buttonGrid1.imageView?.isHidden = false
+            buttonGrid2.imageView?.isHidden = true
+            buttonGrid3.imageView?.isHidden = true
             
             view1.isHidden = false
             view2.isHidden = true
             view3.isHidden = true
         case 2:
-            buttonGrid1.imageView!.isHidden = true
-            buttonGrid2.imageView!.isHidden = false
-            buttonGrid3.imageView!.isHidden = true
+            buttonGrid1.imageView?.isHidden = true
+            buttonGrid2.imageView?.isHidden = false
+            buttonGrid3.imageView?.isHidden = true
             
             view1.isHidden = true
             view2.isHidden = false
             view3.isHidden = true
         case 3:
-            buttonGrid1.imageView!.isHidden = true
-            buttonGrid2.imageView!.isHidden = true
-            buttonGrid3.imageView!.isHidden = false
+            buttonGrid1.imageView?.isHidden = true
+            buttonGrid2.imageView?.isHidden = true
+            buttonGrid3.imageView?.isHidden = false
             
             view1.isHidden = true
             view2.isHidden = true
@@ -182,24 +182,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             print("Error gridNumber?")
         }
     }
-
-    @IBAction func actionButtonGrid1(_ sender: UIButton) {
-        gridNumber = 1
-        selectGrid()
-    }
     
-    @IBAction func actionButtonGrid2(_ sender: UIButton) {
-        gridNumber = 2
-        selectGrid()
-    }
-    
-    @IBAction func actionButtonGrid3(_ sender: UIButton) {
-        gridNumber = 3
+    @IBAction func selectOneGrid(_ sender: UIButton) {
+        gridNumber = sender.tag
         selectGrid()
     }
     
     // MARK: - Image picker    
-    private func prepareImagePickerController(){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if let button = btnSelected {
+                button.setBackgroundImage(image, for: .normal)
+                btnSelected = nil
+            }
+            selectGrid()
+        }
+    }
+    
+    @IBAction func actionButtonClicked(_ sender: UIButton) {
+        btnSelected = sender
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
@@ -207,71 +209,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             present(imagePicker, animated: true, completion: nil)
         }
     }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            if let button = btn {
-                button.setBackgroundImage(image, for: .normal)
-                btn = nil
-            }
-            selectGrid()
-        }
-    }
     
-    // MARK: - View1 Action
-    @IBAction func actionV1U(_ sender: UIButton) {
-        btn = btnV1U
-        prepareImagePickerController()
-    }
-    @IBAction func actionV1DL(_ sender: UIButton) {
-        btn = btnV1DL
-        prepareImagePickerController()
-    }
-    @IBAction func actionV1DR(_ sender: UIButton) {
-        btn = btnV1DR
-        prepareImagePickerController()
-    }
-    
-    // MARK: - View2 Action
-    @IBAction func actionV2UL(_ sender: UIButton) {
-        btn = btnV2UL
-        prepareImagePickerController()
-    }
-    @IBAction func actionV2UR(_ sender: UIButton) {
-        btn = btnV2UR
-        prepareImagePickerController()
-    }
-    @IBAction func actionV2D(_ sender: UIButton) {
-        btn = btnV2D
-        prepareImagePickerController()
-    }
-    
-    // MARK: - View3 Action
-    @IBAction func actionV3UL(_ sender: UIButton) {
-        btn = btnV3UL
-        prepareImagePickerController()
-    }
-    @IBAction func actionV3UR(_ sender: UIButton) {
-        btn = btnV3UR
-        prepareImagePickerController()
-    }
-    @IBAction func actionV3DL(_ sender: UIButton) {
-        btn = btnV3DL
-        prepareImagePickerController()
-    }
-    @IBAction func actionV3DR(_ sender: UIButton) {
-        btn = btnV3DR
-        prepareImagePickerController()
-    }
-
 }
 
-extension UIView {
-    var asImg: UIImage? {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
+

@@ -15,6 +15,7 @@
 		122426B12688DB4500B9A202 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 122426AF2688DB4500B9A202 /* ThirstySoftRegular.otf */; };
 		122426B22688DB4500B9A202 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 122426B02688DB4500B9A202 /* Delm-Medium.otf */; };
 		123C9AC9268F690200F34AF8 /* per2.png in Resources */ = {isa = PBXBuildFile; fileRef = 123C9AC8268F690200F34AF8 /* per2.png */; };
+		12E7346E26A173DE0043DE46 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E7346D26A173DE0043DE46 /* Ext+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		122426AF2688DB4500B9A202 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		122426B02688DB4500B9A202 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		123C9AC8268F690200F34AF8 /* per2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = per2.png; sourceTree = "<group>"; };
+		12E7346D26A173DE0043DE46 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				122426AE2688DA3000B9A202 /* view */,
 				122426A12688D8D600B9A202 /* Assets.xcassets */,
 				122426B02688DB4500B9A202 /* Delm-Medium.otf */,
+				12E7346C26A1739A0043DE46 /* extension */,
 				122426AF2688DB4500B9A202 /* ThirstySoftRegular.otf */,
 				122426A62688D8D600B9A202 /* Info.plist */,
 				123C9AC8268F690200F34AF8 /* per2.png */,
@@ -95,6 +98,14 @@
 				122426A32688D8D600B9A202 /* LaunchScreen.storyboard */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		12E7346C26A1739A0043DE46 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				12E7346D26A173DE0043DE46 /* Ext+UIView.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E7346E26A173DE0043DE46 /* Ext+UIView.swift in Sources */,
 				1224269D2688D8D500B9A202 /* ViewController.swift in Sources */,
 				122426992688D8D500B9A202 /* AppDelegate.swift in Sources */,
 			);
