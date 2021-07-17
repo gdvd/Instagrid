@@ -113,6 +113,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         present(avc, animated: true)
     }
     
+    // When imagePicker goes out, the grid must return
     private func viewsBack(){
         if !orientationChange {
             if UIDevice.current.orientation.isLandscape{
