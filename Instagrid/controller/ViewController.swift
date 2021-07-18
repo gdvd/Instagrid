@@ -40,7 +40,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // temporary button selected to show image after to use pickerView
     private var btnSelected: UIButton?
-    private var orientationChange = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +60,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     //MARK: - Swipes and Moves
     @objc func rotated() {
-        orientationChange = true
         selectGrid()
     }
     
@@ -74,7 +72,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         // Landscape
         if (UIDevice.current.orientation.isLandscape && sender.direction == .left) {
-            orientationChange = false
             UIView.animate(withDuration: 1.0, animations: {
                 self.moveup()
             }, completion: {(finished) in 
@@ -84,7 +81,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             })}
         // Portrait
         if (!UIDevice.current.orientation.isLandscape && (sender.direction == .up)) {
-            orientationChange = false
             UIView.animate(withDuration: 1.0, animations: {
                 self.moveleft()
             }, completion: {(finished) in 
@@ -94,6 +90,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             })
         }
     }
+    
     private func shareView(){
         let img = view0.asImg
         let avc = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
@@ -115,15 +112,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // When imagePicker goes out, the grid must return
     private func viewsBack(){
-        if !orientationChange {
-            if UIDevice.current.orientation.isLandscape{
+        if view0.frame.origin.x < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
                     self.movedown()
                 }, completion: {(finished) in 
                     if finished {
                     }
                 })
-            } else {
+            } else if view0.frame.origin.y < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
                     self.moveright()
                 }, completion: {(finished) in 
@@ -131,7 +127,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     }
                 })
             }   
-        }
     }
     
     private func moveup(){
