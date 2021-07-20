@@ -73,7 +73,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Landscape
         if (UIDevice.current.orientation.isLandscape && sender.direction == .left) {
             UIView.animate(withDuration: 1.0, animations: {
-                self.moveup()
+                self.moveleft()
             }, completion: {(finished) in 
                 if finished {
                     self.shareView()
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Portrait
         if (!UIDevice.current.orientation.isLandscape && (sender.direction == .up)) {
             UIView.animate(withDuration: 1.0, animations: {
-                self.moveleft()
+                self.moveup()
             }, completion: {(finished) in 
                 if finished {
                     self.shareView()
@@ -114,14 +114,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     private func viewsBack(){
         if view0.frame.origin.x < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
-                    self.movedown()
+                    self.moveright()
                 }, completion: {(finished) in 
                     if finished {
                     }
                 })
             } else if view0.frame.origin.y < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
-                    self.moveright()
+                    self.movedown()
                 }, completion: {(finished) in 
                     if finished {
                     }
@@ -129,19 +129,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }   
     }
     
-    private func moveup(){
+    private func moveleft(){
         view0.center.x -= UIScreen.main.bounds.width
     }
     
-    private func moveleft(){
+    private func moveup(){
         view0.center.y -= UIScreen.main.bounds.height
     }
     
-    private func movedown(){
+    private func moveright(){
         view0.center.x += UIScreen.main.bounds.width
     }
     
-    private func moveright(){
+    private func movedown(){
         view0.center.y += UIScreen.main.bounds.height    
         
     }
