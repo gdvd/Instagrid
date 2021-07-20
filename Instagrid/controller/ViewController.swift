@@ -115,16 +115,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if view0.frame.origin.x < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
                     self.moveright()
-                }, completion: {(finished) in 
-                    if finished {
-                    }
                 })
             } else if view0.frame.origin.y < 0 {
                 UIView.animate(withDuration: 1.0, animations: {
                     self.movedown()
-                }, completion: {(finished) in 
-                    if finished {
-                    }
                 })
             }   
     }
